@@ -30,6 +30,11 @@ module.exports = (Sequelize, DataTypes) => {
         allowNull: true,
         defaultValue: true,
       },
+      image: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        defaultValue: true,
+      },
       createdAt: {
         field: 'created_at',
         type: DataTypes.DATE,

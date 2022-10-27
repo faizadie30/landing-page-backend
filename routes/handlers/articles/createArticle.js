@@ -1,6 +1,7 @@
 const { Articles, Article_Category } = require('../../../models');
 const Validator = require('fastest-validator');
 const v = new Validator();
+const { BASE_URL } = process.env;
 
 module.exports = async (req, res) => {
   const schema = {
@@ -39,11 +40,12 @@ module.exports = async (req, res) => {
     });
   }
 
-  const image = `${req.get('host')}/public/images/${req.file.filename}`;
+  // const image = `${req.get('host')}/public/images/${req.file.filename}`;
+  const image = `${BASE_URL}/public/images/${req.file.filename}`;
 
   const data = {
     title: req.body.title,
-    image,
+    image: image,
     short_description: req.body.short_description,
     description: req.body.description,
     category_id: getCategoryArticle.dataValues.id,
