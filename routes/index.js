@@ -22,12 +22,20 @@ const usersHandler = require('./handlers/users');
 const tokenHandler = require('./handlers/refresh-tokens');
 const verifyToken = require('../middleware/verifyToken');
 
-/* category article */
+// routes/handlers/article-category/index.js
+
+/**
+ * @swagger
+ * /api/article-category:
+ *   get:
+ *     summary: get all category article
+ */
 router.get(
   '/article-category',
   verifyToken,
   articleCategoryHandler.getCategoryArticle
 );
+
 router.get(
   '/article-category/:uuid',
   verifyToken,
