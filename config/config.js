@@ -27,5 +27,10 @@ module.exports = {
     host: DB_HOST_PG,
     port: DB_PORT_PG,
     dialect: 'postgres',
+    dialectOptions: {
+      ssl: {
+        rejectUnauthorized: false,
+      },
+    },
   },
 };
