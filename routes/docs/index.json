@@ -1,0 +1,285 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Backend Challenge",
+    "description": "List All API Challenge From PT Sahaware",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api",
+      "description": "localhost"
+    },
+    {
+      "url": "https://sahaware-be.herokuapp.com/api",
+      "description": "Deployment on heroku"
+    }
+  ],
+  "tags": [
+    { "name": "Auth", "description": "Endpoint api use authentication" },
+    {
+      "name": "Articles",
+      "description": "Endpoint api use article action"
+    },
+    {
+      "name": "Category Articles",
+      "description": "Endpoint api use category article action"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Register",
+        "description": "",
+        "consumes": "application/json",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "default": "jajang"
+                  },
+                  "email": {
+                    "default": "jajang@gmail.com"
+                  },
+                  "password": {
+                    "default": "pswd123"
+                  },
+                  "phone": {
+                    "default": "08323423488"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "400": {
+            "description": "error"
+          },
+          "404": {
+            "description": "error"
+          },
+          "409": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Login",
+        "description": "",
+        "consumes": "application/json",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "default": "jajang@gmail.com"
+                  },
+                  "password": {
+                    "default": "pswd123"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "400": {
+            "description": "error"
+          },
+          "404": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/article-category/create": {
+      "post": {
+        "tags": ["Category Articles"],
+        "summary": "Create Category Article",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "description": "",
+        "consumes": "application/json",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "default": "technology"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "409": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/article-category": {
+      "get": {
+        "tags": ["Category Articles"],
+        "summary": "Get Category Article",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/article-category/{uuid}": {
+      "get": {
+        "tags": ["Category Articles"],
+        "summary": "Get Category Article By Uuid",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "uuid",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Uuid Category Article"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/article/create": {
+      "post": {
+        "tags": ["Articles"],
+        "summary": "Create Article",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "description": "",
+        "consumes": "multipart/form-data",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "short_description": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "category_id": {
+                    "type": "string"
+                  },
+                  "is_visible": {
+                    "type": "boolean"
+                  },
+                  "image": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "400": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/articles": {
+      "get": {
+        "tags": ["Articles"],
+        "summary": "Get All Article",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/article-category/{id}": {
+      "get": {
+        "tags": ["Articles"],
+        "summary": "Get Article By Id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "description": "id Article"
+          }
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    }
+  }
+}

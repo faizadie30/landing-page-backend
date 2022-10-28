@@ -19,17 +19,8 @@ const diskStorage = multer.diskStorage({
 const articleCategoryHandler = require('./handlers/article-category');
 const articleHandler = require('./handlers/articles');
 const usersHandler = require('./handlers/users');
-const tokenHandler = require('./handlers/refresh-tokens');
 const verifyToken = require('../middleware/verifyToken');
 
-// routes/handlers/article-category/index.js
-
-/**
- * @swagger
- * /api/article-category:
- *   get:
- *     summary: get all category article
- */
 router.get(
   '/article-category',
   verifyToken,
@@ -47,7 +38,6 @@ router.post(
   verifyToken,
   articleCategoryHandler.createCategoryArticle
 );
-
 /* end category article */
 
 /* article */
@@ -64,7 +54,6 @@ router.get('/articles/:id', articleHandler.getArticleById);
 /* auth */
 router.post('/auth/register', usersHandler.register);
 router.post('/auth/login', usersHandler.login);
-router.post('/auth/refresh-token', tokenHandler.refresh);
 /* end auth */
 
 module.exports = router;

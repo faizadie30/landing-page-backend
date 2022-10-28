@@ -77,7 +77,6 @@ module.exports = async (req, res) => {
     }
   );
 
-  data.refresh_token = refreshToken;
   data.token = token;
 
   await RefreshToken.create({

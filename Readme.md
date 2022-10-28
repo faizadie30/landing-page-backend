@@ -20,3 +20,8 @@ https://sahaware-be.herokuapp.com/
 With Nodemon: nodemon app.js
 <br>
 With node cli: npm run start
+
+# URL SWAGGER
+
+On local: http://localhost:3000/docs
+On Server: https://sahaware-be.herokuapp.com/
