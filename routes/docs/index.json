@@ -49,10 +49,10 @@
                 "type": "object",
                 "properties": {
                   "name": {
-                    "default": "jajang"
+                    "default": "dinda"
                   },
                   "email": {
-                    "default": "jajang@gmail.com"
+                    "default": "dinda@gmail.com"
                   },
                   "password": {
                     "default": "pswd123"
@@ -94,7 +94,7 @@
                 "type": "object",
                 "properties": {
                   "email": {
-                    "default": "jajang@gmail.com"
+                    "default": "dinda@gmail.com"
                   },
                   "password": {
                     "default": "pswd123"
