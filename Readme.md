@@ -15,7 +15,7 @@ result project terms and condition challenge Technical Test from PT Sahaware
 
 https://sahaware-be.herokuapp.com/
 
-# Run Project
+# Run Project On Local Area
 
 With Nodemon: nodemon app.js
 <br>
